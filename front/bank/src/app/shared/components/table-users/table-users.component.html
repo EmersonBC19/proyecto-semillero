@@ -1,0 +1,41 @@
+<div *ngIf="loading">Cargando ...</div>
+<div *ngIf="error" class="error">{{ error }}</div>
+
+<div class="w-full mx-auto max-w-[1200px]">
+  <div class="overflow-x-auto">
+    <table
+      *ngIf="!loading && !error"
+      class="items-center mb-0 align-top border-gray-200 text-slate-500 w-full"
+    >
+      <thead class="align-bottom">
+        <tr>
+          <th
+            *ngFor="let column of columns"
+            class="px-6 py-1 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-900 opacity-70"
+          >
+            {{ column }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of dataSource.connect() | async">
+          <td
+            *ngFor="let column of columns"
+            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent text-center"
+          >
+            {{ item[column] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Paginador -->
+  <mat-paginator
+    [length]="dataSource.data.length"
+    [pageSize]="5"
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+    aria-label="Select page of periodic elements"
+  ></mat-paginator>
+</div>

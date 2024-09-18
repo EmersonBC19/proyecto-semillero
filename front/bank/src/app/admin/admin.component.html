@@ -1,0 +1,18 @@
+<main class="parent">
+  <section>
+    <header>
+      <app-navbar></app-navbar>
+    </header>
+  </section>
+  <section class="div1">
+    <div
+      class="flex bg-slate-100 h-screen antialiased text-black selection:bg-blue-600 selection:text-white"
+    >
+      <div class="flex relative w-screen">
+        <div class="text-black px-2 mt-2 w-full">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
